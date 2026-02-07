@@ -10,7 +10,7 @@ Haven’s MVP is intentionally scoped to reduce these gaps by providing a single
 # Technical Description
 [Architectural diagram](here)
 
-[Low fidelity Figma wireframe](https://www.figma.com/proto/ch6Gnp3NhAgYMLHPro0wBj/HAVEN-Aurora?node-id=0-1&t=7CyEk4isylmHpiMA-1)
+[Low fidelity Figma wireframe](https://www.figma.com/design/ch6Gnp3NhAgYMLHPro0wBj/HAVEN-Aurora?node-id=107-10&t=5sRebyhr3L10ZuO4-1)
 
 # Architectural Diagram
 Attach image here
