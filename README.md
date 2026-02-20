@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Description - Haven
+Deployed website: [here]
 
-## Getting Started
+Haven is a platform concept designed to address communication gaps before, during, and after foster care placement, so caregivers are better prepared and equipped throughout the process. At the moment of placement, information is often limited, unclear, or delayed, making it difficult for caregivers to understand a child’s needs and what support will be required. These gaps exist largely because communication and information transfer depend on individual caseworker capacity rather than a consistent, centralized system.
 
-First, run the development server:
+Structural barriers further complicate the experience. Foster caregivers, biological parents, and kins lacks the bridge to freely share and access information from each other due to confidentiality issues. Important care resources such as education facilities, healthcare information, and cultural/religious habits are often scattered across agencies or arrive late, leaving caregivers to spend significant time chasing information and making high-stakes decisions with limited clarity.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Haven’s MVP is intentionally scoped to reduce these gaps by providing a single, secure platform for referrals, resources, and community engagement. Rather than replacing existing child welfare systems, the MVP focuses on improving access, awareness, and connection—helping caregivers understand what information is available, where to go for support, and how to navigate placement with greater confidence before, during, and after it occurs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Technical Description
+[Architectural diagram](here)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+[Low fidelity Figma wireframe](https://www.figma.com/design/ch6Gnp3NhAgYMLHPro0wBj/HAVEN-Aurora?node-id=107-10&t=5sRebyhr3L10ZuO4-1)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Architectural Diagram
+Attach image here
 
-## Learn More
+# Data Flow Diagram
+Attach image here
 
-To learn more about Next.js, take a look at the following resources:
+# API Endpoints
+POST __
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GET __
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+DELETE __
 
-## Deploy on Vercel
+# Database Schemas
+Description of our database choice:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Potential schema:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_____
+
+# Summary Tables for User Stories
+Priority  | User   | Description | Technical Implementation
+------------- | -------------   | ------------- | -------------
+P0  | As a user  | I want to be ___. | ______
+P0  | As a user  | I want to be ___. | ______
+P0  | As a user  | I want to be ___. | ______
+P1  | As a user  | I want to be ___. | ______
+P1  | As a user  | I want to be ___. | ______
+P1  | As a user  | I want to be ___. | ______
+P2  | As a user  | I want to be ___. | ______
+P2  | As a user  | I want to be ___. | ______
