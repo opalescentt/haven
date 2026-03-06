@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 
-// export the auth options for getServerSession
+// Auth options exported for getServerSession
 export const authOptions = {
   providers: [
     GoogleProvider({
@@ -29,7 +29,6 @@ export const authOptions = {
       await connectDB();
 
       const dbUser = await User.findOne({ email: session.user.email });
-
       if (dbUser) {
         session.user.role = dbUser.role;
       }
@@ -39,8 +38,7 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-// create the NextAuth handler using the exported options
+// NextAuth handler for API routes
 const handler = NextAuth(authOptions);
 
-// export the API routes
 export { handler as GET, handler as POST };
