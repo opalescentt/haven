@@ -1,45 +1,46 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import {connectDB} from "@/lib/mongodb";
+import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 
-const handler = NextAuth({
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        }),
-    ],
+// export the auth options for getServerSession
+export const authOptions = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+  callbacks: {
+    async signIn({ user }) {
+      await connectDB();
 
-    callbacks: {
-        async signIn({user}){
-            await connectDB();
+      const existingUser = await User.findOne({ email: user.email });
 
-            const existingUser = await User.findOne({email:user.email})
-
-            if (!existingUser){
-                await User.create({
-                    name: user.name,
-                    email: user.email,
-                })
-            }
-            return true
-        },
-
-        async session({session}){
-            await connectDB();
-
-            const dbUser = await User.findOne({
-                email:session.user.email,
-            })
-
-            if(dbUser){
-                session.user.role=dbUser.role
-            }
-            return session
-        },
+      if (!existingUser) {
+        await User.create({
+          name: user.name,
+          email: user.email,
+        });
+      }
+      return true;
     },
-    secret: process.env.NEXTAUTH_SECRET,
-})
+    async session({ session }) {
+      await connectDB();
 
-export {handler as GET, handler as POST}
+      const dbUser = await User.findOne({ email: session.user.email });
+
+      if (dbUser) {
+        session.user.role = dbUser.role;
+      }
+      return session;
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+};
+
+// create the NextAuth handler using the exported options
+const handler = NextAuth(authOptions);
+
+// export the API routes
+export { handler as GET, handler as POST };

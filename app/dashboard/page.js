@@ -64,7 +64,6 @@ export default function Dashboard() {
     // const [children, setChildren] = useState(seedChildren)
     
     return(
-        
         <div className="min-h-screen bg-[#faf6ee]">
             {/* Header & Intro */}
             <div className="bg-[#1a3a2e] px-10 py-8">
