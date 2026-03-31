@@ -28,7 +28,7 @@ export default function StaffDirectory() {
 
       <main className="max-w-4xl mx-auto p-6 md:p-10 space-y-6">
         <p>Staff Directory</p>
-        <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 space-y-4">
+        {/* <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 space-y-4">
           <h3 className="text-xl font-semibold text-[#1a3a2e]">
             Looking for in-network providers?
           </h3>
@@ -43,7 +43,7 @@ export default function StaffDirectory() {
           >
             Search Providers
           </a>
-        </div>
+        </div> */}
       </main>
     </div>
   );

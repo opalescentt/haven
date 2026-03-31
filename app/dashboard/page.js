@@ -236,6 +236,24 @@ export default function Dashboard() {
                     
                 </div>
             </div>
+            <main className="max-w-6xl mx-auto px-6 py-7">
+                <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 space-y-4">
+                    <h3 className="text-xl font-semibold text-[#1a3a2e]">
+                        Looking for in-network providers?
+                    </h3>
+                    <p className="text-gray-600">
+                        Use the button below to search for providers for your placement child.
+                    </p>
+                    <a
+                        href="https://findaprovider.coordinatedcarehealth.com/location"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-[#1a3a2e] text-white px-5 py-3 rounded-lg font-medium hover:bg-[#356143] transition"
+                    >
+                        Search Providers
+                    </a>
+                </div>
+            </main>
         </div>
     )
 }
