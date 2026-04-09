@@ -4,31 +4,49 @@ import { signIn, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 
+const items = [
+  { icon: "/icons/welfare.png", label: "Child Welfare Agencies" },
+  { icon: "/icons/fam_support.png", label: "Family Support Services" },
+  { icon: "/icons/com_org.png", label: "Community Organizations" },
+  { icon: "/icons/health.png", label: "Healthcare Partners" },
+]
+
+const partners = [
+  { name: "HopeSparks", desc: "Supporting children and families...", image: "/partners/hopesparks.jpg", url: "#" },
+  { name: "Multicultural Child and Family Hope Center", desc: "Creating a culturally responsive...", image: "/partners/multicultural.jpg", url: "#" },
+  { name: "Franklin Pierce School District", desc: "Partnering with families...", image: "/partners/franklin.jpg", url: "#" },
+  { name: "Legal Council for Youth over Children", desc: "Providing legal advocacy...", image: "/partners/legal.jpg", url: "#" },
+  { name: "Kindering", desc: "Ensuring that babies and toddlers...", image: "/partners/kindering.jpg", url: "#" },
+  { name: "Coordinated Care", desc: "Improving health outcomes...", image: "/partners/coordinated.jpg", url: "#" },
+  { name: "Kids Mental Health Pierce County", desc: "Community-based mental health...", image: "/partners/kids-mental.jpg", url: "#" },
+  { name: "Northwest Justice Project", desc: "Free civil legal aid...", image: "/partners/northwest.jpg", url: "#" },
+]
+
+const features = [
+  {
+    icon: "🗂",
+    title: "Child Profile",
+    desc: "Navigate your caregiving journey with personalized resource recommendations curated for your placement child.",
+  },
+  {
+    icon: "👥",
+    title: "Staff Directory",
+    desc: "Transparent access to Amara staff and program personnel — find the right person, fast.",
+  },
+  {
+    icon: "🤝",
+    title: "Support Groups",
+    desc: "Sign up for support group activities in your area and connect with caregivers like you.",
+  },
+]
+
 export default function LandingPage() {
   const { data: session } = useSession()
   const router = useRouter()
 
-  const features = [
-    {
-      icon: "🗂",
-      title: "Dashboard",
-      desc: "Navigate your caregiving journey with personalized resource recommendations curated for your placement child.",
-    },
-    {
-      icon: "👥",
-      title: "Staff Directory",
-      desc: "Transparent access to Amara staff and program personnel — find the right person, fast.",
-    },
-    {
-      icon: "🤝",
-      title: "Support Groups",
-      desc: "Sign up for support group activities in your area and connect with caregivers like you.",
-    },
-  ]
-
   return (
     <main className="min-h-screen bg-[#faf6ee] font-sans">
-      <div className="bg-[#1a3a2e] px-8 py-20 text-center relative overflow-hidden">
+      <section className="bg-[#1a3a2e] px-8 py-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(106,153,78,0.15),transparent_60%)]" />
         <div className="relative max-w-2xl mx-auto">
           <div className="flex justify-center mb-6">
@@ -49,17 +67,17 @@ export default function LandingPage() {
             <div className="flex flex-col items-center gap-3">
               <p className="text-[#9ab89a] text-sm">Welcome back, {session.user?.name?.split(" ")[0]}!</p>
               <button
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push("/child-profile")}
                 className="bg-[#f5a623] text-white border-none rounded-full px-10 py-4 text-base font-bold cursor-pointer hover:bg-[#e09010] transition-colors"
               >
-                Go to Dashboard →
+                Go to Child Profile →
               </button>
             </div>
           ) : (
             <div className="flex flex-col items-center gap-4">
               <p className="text-white/60 text-sm">Free resources — login today to access all features</p>
               <button
-                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+                onClick={() => signIn("google", { callbackUrl: "/child-profile" })}
                 className="bg-white text-[#1a3a2e] border-none rounded-full px-10 py-4 text-base font-bold cursor-pointer flex items-center gap-3 hover:bg-gray-50 transition-colors shadow-lg"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24">
@@ -73,8 +91,9 @@ export default function LandingPage() {
             </div>
           )}
         </div>
-      </div>
-      <div className="max-w-5xl mx-auto px-8 py-16">
+      </section>
+
+      <section className="max-w-5xl mx-auto px-8 py-16">
         <h2 className="text-center text-2xl font-bold text-[#1a2e1a] mb-2">Everything you need, in one place</h2>
         <p className="text-center text-gray-400 text-sm mb-10">Built specifically for Amara&apos;s licensed caregivers</p>
 
@@ -87,20 +106,151 @@ export default function LandingPage() {
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="bg-[#1a3a2e] text-center py-14 px-8">
+      <section className="bg-[#1a3a2e] text-center py-14 px-8">
         <h2 className="text-white text-2xl font-bold mb-3">Ready to get started?</h2>
         <p className="text-[#9ab89a] text-sm mb-7">Join hundreds of caregivers already using Haven.</p>
         {!session && (
           <button
-            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+            onClick={() => signIn("google", { callbackUrl: "/child-profile" })}
             className="bg-[#f5a623] text-white border-none rounded-full px-10 py-4 text-base font-bold cursor-pointer hover:bg-[#e09010] transition-colors"
           >
             Sign in with Google →
           </button>
         )}
-      </div>
-    </main>
+      </section>
+      
+      <section className="max-w-5xl mx-auto px-8 py-16">
+        <h2 className="text-center text-3xl font-bold text-[#113C3B] mb-1">Ab<span className="underline decoration-[#0D696A] underline-offset-25">out A</span>mara</h2>
+        <p className="text-center text-m text-gray-500 mt-10 mb-10">Ensuring every child in foster care has a permanent, loving family.</p>
+        <div className="grid grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 className="font-bold text-xl text-[#113C3B] mb-3">Our Mission</h3>
+            <p className="text-gray-500 text-m leading-relaxed mb-6">
+              Amara provides comprehensive support to foster and kinship caregivers, offering resources, training, and a community that understands the unique challenges and joys of foster care. Through collaboration with community partners and evidence-based practices, Amara works to create lasting positive outcomes for children and families across Washington State.
+            </p>
+            <div className="flex gap-8">
+              {[["5,234", "Families"], ["3,400+", "Hours"], ["24/7", "Support"]].map(([num, label]) => (
+                <div key={label}>
+                  <p className="text-2xl font-bold text-[#0D696A]">{num}</p>
+                  <p className="text-s text-gray-400">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <Image src="/about_amara.png" alt="Two licensed caregivers hugging their foster childrens." width={288} height={144} className="rounded-2xl w-full h-50 object-cover col-span-2" />
+            <Image src="/community.png" alt="A person looking down to engage with another person during an outdoor gathering." width={288} height={144} className="rounded-2xl w-full h-35 object-cover" />
+            <Image src="/support_program.png" alt="Amara’s Caregiver Support program provided compassionate support to help Becca and her grandparents access the medical care and essential equipment she needs." width={288} height={144} className="rounded-2xl w-full h-35 object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F0F9F9] border border-[#6fafb068] rounded-3xl max-w-4xl mx-auto px-9 py-12 mb-16 shadow-sm">
+        <h2 className="text-center text-2xl font-bold text-[#113C3B] tracking-wide mb-10">Community I<span className="underline decoration-[#0D696A] underline-offset-25">S the </span> Recovery Plan</h2>
+        <p className="text-center text-xs font-semibold text-[#0D696A] uppercase tracking-wide mb-8">A Collaborative Effort Across Pierce & King Counties</p>
+        <p className="text-center text-gray-500 text-m leading-relaxed mb-8 max-w-3xl mx-auto">
+          The Community IS the Recovery Plan initiative brings together trusted organizations, agencies, and individuals dedicated to supporting foster and kinship caregivers in the greater sphere of child welfare. Through collaboration and shared resources, this is building a network that ensures no family walks the foster journey alone.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          {items.map((item) => (
+          <div key={item.label} className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-xl w-40">
+            <Image
+              src={item.icon}
+              alt={item.label}
+              width={48}
+              height={48}
+              className="mb-4 object-contain"
+            />
+            <p className="text-xs text-[#364153] font-medium w-25 wrap-break-word">{item.label}</p>
+          </div>
+          ))}
+        </div>
+        <Image src="/connected_dots.png" alt="Four connected dots in teal, cyan, orange, and yellow from left to right" width={1200} height={2} className="rounded-2xl w-full h-full object-cover col-span-2" />
+        <p className="text-center font-light text-xs text-[#4A5565] italic mt-3">Working together to support every family</p>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-1">
+        <p className="text-center text-xs text-[#6A7282] uppercase tracking-widest mb-8">Community IS the Recovery Plan Partners</p>
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-6 text-[#99a1afb1] text-xl font-semibold  mb-20">
+              {["Tacoma Public Schools", "First5Fundamentals", "Tahoma Indian Center", "Institute for Black Justice", "HopeSparks", "Coordinated Care", "Community Health Care"].map((p) => (
+              <span key={p}>{p}</span>
+              ))}
+          </div>
+      </section>
+      
+      <section className="relative mt-16">
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/partner_section.png"
+            fill
+            className="object-cover object-top"
+            alt="Partner Section Background"
+          />
+        </div>
+        <div className="relative z-10 max-w-5xl mx-auto px-8 py-16">
+          <h2 className="text-center text-4xl font-semibold text-[#FFF9EE] mt-10 mb-2 tracking-wide">
+            Our Partner Organizations
+          </h2>
+          <p className="text-center font-thin text-s text-m mb-10 text-[#FFFFFF]">
+            Trusted agencies working together to support foster and kinship caregivers
+          </p>
+
+          <div className="grid grid-cols-4 gap-4 mb-6">
+            {partners.map((partner) => (
+              <div key={partner.name} className="bg-white rounded-2xl border border-[#ede8df] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-4">
+                  <h4 className="font-bold text-xs text-[#1a2e1a] mb-1">{partner.name}</h4>
+                  <p className="text-xs text-gray-400 leading-relaxed mb-3">{partner.desc}</p>
+                  <a href={partner.url} className="text-xs text-[#1a3a2e] font-semibold underline">Visit →</a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-15">
+            <button className="bg-white text-[#1a3a2e] rounded-full px-8 py-3 text-sm font-semibold hover:bg-gray-100 transition-colors">
+              See More ↓
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <section className="max-w-5xl mx-auto px-8 mt-20 mb-30 pb-16">
+        <h2 className="text-center text-3xl font-bold text-[#1a2e1a] mb-6">
+          Sign up for Amara&apos;s Caregiver Newsletter
+        </h2>
+
+        <div className="flex flex-col md:flex-row gap-4 items-center">
+          {/* Text */}
+          <div className="flex-1">
+            <p className="text-gray-500 mb-4">
+              Each month&apos;s newsletter looks a little different and includes a variety of information and resources! The newsletter is available to caregivers in Amara&apos;s Caregiver Support Program.
+            </p>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="flex-1 border border-[#ede8df] rounded-md px-5 py-3 outline-none focus:border-[#1a3a2e]"
+              />
+              <button className="bg-[#1a3a2e] text-white rounded-md px-6 py-3 hover:bg-[#0f2a1e] transition-colors">
+                Subscribe
+              </button>
+            </div>
+          </div>
+
+          <div className="flex-1 flex justify-center">
+            <Image
+              src="/newsletter_photo.png"
+              alt="Amara"
+              width={300}
+              height={208}
+              className="object-cover w-full max-w-50 h-auto"
+            />
+          </div>
+        </div>
+      </section>
+  </main>
   )
 }
