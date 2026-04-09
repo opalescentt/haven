@@ -8,5 +8,5 @@ export const middleware = withAuth({
 
 export const config = {
     matcher: ["/somethingplaceholder"],
-    // matcher: ["/dashboard", "/staff-directory", "/support-groups"], // protect access to the features, must be logging to access
+    // matcher: ["/child-profile", "/resources-map", "/staff-directory", "/support-groups"], // protect access to the features, must be logging to access
 };
