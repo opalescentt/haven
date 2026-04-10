@@ -3,42 +3,8 @@
 import { signIn, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-
-const items = [
-  { icon: "/icons/welfare.png", label: "Child Welfare Agencies" },
-  { icon: "/icons/fam_support.png", label: "Family Support Services" },
-  { icon: "/icons/com_org.png", label: "Community Organizations" },
-  { icon: "/icons/health.png", label: "Healthcare Partners" },
-]
-
-const partners = [
-  { name: "HopeSparks", desc: "Supporting children and families...", image: "/partners/hopesparks.jpg", url: "#" },
-  { name: "Multicultural Child and Family Hope Center", desc: "Creating a culturally responsive...", image: "/partners/multicultural.jpg", url: "#" },
-  { name: "Franklin Pierce School District", desc: "Partnering with families...", image: "/partners/franklin.jpg", url: "#" },
-  { name: "Legal Council for Youth over Children", desc: "Providing legal advocacy...", image: "/partners/legal.jpg", url: "#" },
-  { name: "Kindering", desc: "Ensuring that babies and toddlers...", image: "/partners/kindering.jpg", url: "#" },
-  { name: "Coordinated Care", desc: "Improving health outcomes...", image: "/partners/coordinated.jpg", url: "#" },
-  { name: "Kids Mental Health Pierce County", desc: "Community-based mental health...", image: "/partners/kids-mental.jpg", url: "#" },
-  { name: "Northwest Justice Project", desc: "Free civil legal aid...", image: "/partners/northwest.jpg", url: "#" },
-]
-
-const features = [
-  {
-    icon: "🗂",
-    title: "Child Profile",
-    desc: "Navigate your caregiving journey with personalized resource recommendations curated for your placement child.",
-  },
-  {
-    icon: "👥",
-    title: "Staff Directory",
-    desc: "Transparent access to Amara staff and program personnel — find the right person, fast.",
-  },
-  {
-    icon: "🤝",
-    title: "Support Groups",
-    desc: "Sign up for support group activities in your area and connect with caregivers like you.",
-  },
-]
+import { partners, labelStyles } from "@/lib/constants/partners"
+import { features, items } from "@/lib/constants/features"
 
 export default function LandingPage() {
   const { data: session } = useSession()
@@ -50,16 +16,12 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(106,153,78,0.15),transparent_60%)]" />
         <div className="relative max-w-2xl mx-auto">
           <div className="flex justify-center mb-6">
-            <Image src="/logo.png" alt="Haven logo" width={64} height={64} className="rounded-2xl" />
+            <Image src="/logo.png" alt="Haven logo" width={64} height={64} className="rounded-2xl" loading="eager" priority />
           </div>
           <h1 className="text-white text-5xl font-bold mb-4 font-serif">Haven</h1>
-          <p className="text-[#9ab89a] text-lg mb-10 leading-relaxed">
-            One stop resource hub for Amara&apos;s licensed caregivers.
-          </p>
+          <p className="text-[#9ab89a] text-lg mb-10 leading-relaxed">One stop resource hub for Amara&apos;s licensed caregivers.</p>
           <div className="bg-white/10 rounded-2xl px-8 py-6 mb-10 text-left border border-white/10">
-            <p className="text-white/80 text-base italic leading-relaxed">
-                &quot;I didn&apos;t know where to start or who to call. I just needed one place that had everything.&quot;
-            </p>
+            <p className="text-white/80 text-base italic leading-relaxed">&quot;I didn&apos;t know where to start or who to call. I just needed one place that had everything.&quot;</p>
             <p className="text-[#9ab89a] text-sm mt-3">— Amara Licensed Caregiver</p>
           </div>
 
@@ -150,19 +112,11 @@ export default function LandingPage() {
       <section className="bg-[#F0F9F9] border border-[#6fafb068] rounded-3xl max-w-4xl mx-auto px-9 py-12 mb-16 shadow-sm">
         <h2 className="text-center text-2xl font-bold text-[#113C3B] tracking-wide mb-10">Community I<span className="underline decoration-[#0D696A] underline-offset-25">S the </span> Recovery Plan</h2>
         <p className="text-center text-xs font-semibold text-[#0D696A] uppercase tracking-wide mb-8">A Collaborative Effort Across Pierce & King Counties</p>
-        <p className="text-center text-gray-500 text-m leading-relaxed mb-8 max-w-3xl mx-auto">
-          The Community IS the Recovery Plan initiative brings together trusted organizations, agencies, and individuals dedicated to supporting foster and kinship caregivers in the greater sphere of child welfare. Through collaboration and shared resources, this is building a network that ensures no family walks the foster journey alone.
-        </p>
+        <p className="text-center text-gray-500 text-m leading-relaxed mb-8 max-w-3xl mx-auto">The Community IS the Recovery Plan initiative brings together trusted organizations, agencies, and individuals dedicated to supporting foster and kinship caregivers in the greater sphere of child welfare. Through collaboration and shared resources, this is building a network that ensures no family walks the foster journey alone.</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
           {items.map((item) => (
           <div key={item.label} className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-xl w-40">
-            <Image
-              src={item.icon}
-              alt={item.label}
-              width={48}
-              height={48}
-              className="mb-4 object-contain"
-            />
+            <Image src={item.icon} alt={item.label} width={48} height={48} className="mb-4 object-contain"/>
             <p className="text-xs text-[#364153] font-medium w-25 wrap-break-word">{item.label}</p>
           </div>
           ))}
@@ -182,72 +136,51 @@ export default function LandingPage() {
       
       <section className="relative mt-16">
         <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/partner_section.png"
-            fill
-            className="object-cover object-top"
-            alt="Partner Section Background"
-          />
+          <Image src="/partner_section.png" fill sizes="100vw" loading="eager" priority className="object-cover object-top" alt="Partner Section Background"/>
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-8 py-16">
           <h2 className="text-center text-4xl font-semibold text-[#FFF9EE] mt-10 mb-2 tracking-wide">
             Our Partner Organizations
           </h2>
-          <p className="text-center font-thin text-s text-m mb-10 text-[#FFFFFF]">
-            Trusted agencies working together to support foster and kinship caregivers
-          </p>
+          <p className="text-center font-thin text-s text-m mb-10 text-[#FFFFFF]">Trusted agencies working together to support foster and kinship caregivers</p>
 
-          <div className="grid grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-6">
             {partners.map((partner) => (
-              <div key={partner.name} className="bg-white rounded-2xl border border-[#ede8df] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-4">
-                  <h4 className="font-bold text-xs text-[#1a2e1a] mb-1">{partner.name}</h4>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-3">{partner.desc}</p>
-                  <a href={partner.url} className="text-xs text-[#1a3a2e] font-semibold underline">Visit →</a>
+              <div key={partner.name} className="bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                <div className="relative w-full h-36">
+                  <Image src={partner.image} alt={partner.name} fill sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw" className="object-cover" />
+                  <div className={`absolute top-2 left-2 text-[10px] font-semibold px-2 py-1 rounded-md shadow-sm ${labelStyles[partner.label] || "bg-gray-100 text-gray-700"}`}>{partner.label}</div>
+                </div>
+                <div className="p-4 flex flex-col grow">
+                  <h4 className="text-sm font-semibold mb-1 text-[#113C3B]">{partner.name}</h4>
+                  <p className="text-[11px] italic text-[#0D696A] mb-2">{partner.quote}</p>
+                  <p className="text-xs text-[#364153] mb-2">{partner.desc}</p>
+                  <p className="text-[10px] mb-2 text-[#113C3B]">{partner.location || " "}</p>
+                  <a href={partner.url} className="mt-auto text-center text-xs text-white bg-[#1a3a2e] py-2 rounded-lg hover:bg-[#2f5a4a]">Visit →</a>
                 </div>
               </div>
             ))}
           </div>
-
           <div className="text-center mt-15">
-            <button className="bg-white text-[#1a3a2e] rounded-full px-8 py-3 text-sm font-semibold hover:bg-gray-100 transition-colors">
-              See More ↓
-            </button>
+            <button className="bg-white text-[#1a3a2e] rounded-full px-8 py-3 text-sm font-semibold hover:bg-gray-100 transition-colors">See More ↓</button>
           </div>
         </div>
       </section>
       
       <section className="max-w-5xl mx-auto px-8 mt-20 mb-30 pb-16">
-        <h2 className="text-center text-3xl font-bold text-[#1a2e1a] mb-6">
-          Sign up for Amara&apos;s Caregiver Newsletter
-        </h2>
+        <h2 className="text-center text-3xl font-bold text-[#1a2e1a] mb-6">Sign up for Amara&apos;s Caregiver Newsletter</h2>
 
         <div className="flex flex-col md:flex-row gap-4 items-center">
-          {/* Text */}
           <div className="flex-1">
-            <p className="text-gray-500 mb-4">
-              Each month&apos;s newsletter looks a little different and includes a variety of information and resources! The newsletter is available to caregivers in Amara&apos;s Caregiver Support Program.
-            </p>
+            <p className="text-gray-500 mb-4">Each month&apos;s newsletter looks a little different and includes a variety of information and resources! The newsletter is available to caregivers in Amara&apos;s Caregiver Support Program.</p>
             <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 border border-[#ede8df] rounded-md px-5 py-3 outline-none focus:border-[#1a3a2e]"
-              />
-              <button className="bg-[#1a3a2e] text-white rounded-md px-6 py-3 hover:bg-[#0f2a1e] transition-colors">
-                Subscribe
-              </button>
+              <input type="email" placeholder="Enter your email address" className="flex-1 border border-[#ede8df] rounded-md px-5 py-3 outline-none focus:border-[#1a3a2e]"/>
+              <button className="bg-[#1a3a2e] text-white rounded-md px-6 py-3 hover:bg-[#0f2a1e] transition-colors">Subscribe</button>
             </div>
           </div>
 
           <div className="flex-1 flex justify-center">
-            <Image
-              src="/newsletter_photo.png"
-              alt="Amara"
-              width={300}
-              height={208}
-              className="object-cover w-full max-w-50 h-auto"
-            />
+            <Image src="/newsletter_photo.png" alt="Amara" width={300} height={208} className="object-cover w-full max-w-50 h-auto"/>
           </div>
         </div>
       </section>
