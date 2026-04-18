@@ -6,7 +6,7 @@ import { connectDB } from "@/lib/mongodb";
 // Fetch user info
 export async function GET() {
   const session = await getServerSession(authOptions);
-  global.cachedSession = session; // Cache the session globally
+  // global.cachedSession = session; // Cache the session globally
   if (!session) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
   }
