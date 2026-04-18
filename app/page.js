@@ -1,6 +1,6 @@
 "use client"
 
-import { signIn, useSession, sta } from "next-auth/react"
+import { signIn, useSession, status } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { partners, labelStyles } from "@/lib/constants/partners"
