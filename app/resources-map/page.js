@@ -79,7 +79,7 @@ export default function ResourcesMap() {
                         </select>
                         <button className="bg-[#f5a623] text-[#1a2e1a] rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-[#8aa285] transition">+ Add Child</button>
                     </div>
-            </div>
+                </div>
                     <div className="max-w-6xl mx-auto px-6 py-7">
                         <div className="grid grid-cols-3 gap-5 mb-5"> {/*3 Cards*/}
                             <div className="bg-white rounded-2xl p-6 border border-[#ede8df] shadow-sm">

@@ -7,7 +7,7 @@ import { partners, labelStyles } from "@/lib/constants/partners"
 import { features, items } from "@/lib/constants/features"
 
 export default function LandingPage() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   return (
