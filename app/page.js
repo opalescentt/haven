@@ -1,13 +1,13 @@
 "use client"
 
-import { signIn, useSession, status } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { partners, labelStyles } from "@/lib/constants/partners"
 import { features, items } from "@/lib/constants/features"
 
 export default function LandingPage() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
 
   return (
@@ -73,7 +73,7 @@ export default function LandingPage() {
       <section className="bg-[#1a3a2e] text-center py-14 px-8">
         <h2 className="text-white text-2xl font-bold mb-3">Ready to get started?</h2>
         <p className="text-[#9ab89a] text-sm mb-7">Join hundreds of caregivers already using Haven.</p>
-        {status === "loading" ? null : !session && (
+        {!session && (
           <button
             onClick={() => signIn("google", { callbackUrl: "/child-profile" })}
             className="bg-[#f5a623] text-white border-none rounded-full px-10 py-4 text-base font-bold cursor-pointer hover:bg-[#e09010] transition-colors"
