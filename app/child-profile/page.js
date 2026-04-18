@@ -19,6 +19,10 @@ export default function ChildProfile() {
                 <p className="font-thin leading-relaxed">Upcoming sessions for February 2026</p>
             </div>
             {/* Add Calendar-maybe use existing calendar/scheduling services to do implement+automate this step */}
+
+            <div>
+                
+            </div>
         </div>
     )
 }

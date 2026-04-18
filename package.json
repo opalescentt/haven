@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--max-old-space-size=4096' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "dotenv": "^17.4.2",
     "jsdom": "^29.0.2",
     "lucide-react": "^1.8.0",
