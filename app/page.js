@@ -12,15 +12,12 @@ export default function LandingPage() {
 
   return (
     <main className="min-h-screen bg-[#faf6ee] font-sans">
-      <section className="bg-[#1a3a2e] px-8 py-20 text-center relative overflow-hidden">
+      <section className="bg-[#127CB3] px-8 py-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(106,153,78,0.15),transparent_60%)]" />
         <div className="relative max-w-2xl mx-auto">
-          <div className="flex justify-center mb-6">
-            <Image src="/logo.png" alt="Haven logo" width={64} height={64} className="rounded-2xl" loading="eager" priority />
-          </div>
-          <h1 className="text-white text-5xl font-bold mb-4 font-serif">Haven</h1>
-          <p className="text-[#9ab89a] text-lg mb-10 leading-relaxed">One stop resource hub for Amara&apos;s licensed caregivers.</p>
-          <div className="bg-white/10 rounded-2xl px-8 py-6 mb-10 text-left border border-white/10">
+          <div className="border-[#FFC50C] px-8 py-6 mb-10 text-left border border-width: 3px">
+            <h1 className="text-white text-5xl font-bold mb-4 font-serif">Haven</h1>
+            <p className="text-[#9ab89a] text-lg mb-10 leading-relaxed">One stop resource hub for Amara&apos;s licensed caregivers.</p>
             <p className="text-white/80 text-base italic leading-relaxed">&quot;I didn&apos;t know where to start or who to call. I just needed one place that had everything.&quot;</p>
             <p className="text-[#9ab89a] text-sm mt-3">— Amara Licensed Caregiver</p>
           </div>
@@ -30,7 +27,7 @@ export default function LandingPage() {
               <p className="text-[#9ab89a] text-sm">Welcome back, {session.user?.name?.split(" ")[0]}!</p>
               <button
                 onClick={() => router.push("/child-profile")}
-                className="bg-[#f5a623] text-white border-none rounded-full px-10 py-4 text-base font-bold cursor-pointer hover:bg-[#e09010] transition-colors"
+                className="bg-[#FFC50C] text-white border-none rounded-full px-10 py-4 text-base font-bold cursor-pointer hover:bg-[#e09010] transition-colors"
               >
                 Go to Child Profile →
               </button>
@@ -70,7 +67,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-[#1a3a2e] text-center py-14 px-8">
+      <section className="bg-[#FFC50C] text-center py-14 px-8">
         <h2 className="text-white text-2xl font-bold mb-3">Ready to get started?</h2>
         <p className="text-[#9ab89a] text-sm mb-7">Join hundreds of caregivers already using Haven.</p>
         {!session && (
@@ -136,13 +133,13 @@ export default function LandingPage() {
       
       <section className="relative mt-16">
         <div className="absolute inset-0 w-full h-full">
-          <Image src="/partner_section.png" fill sizes="100vw" loading="eager" priority className="object-cover object-top" alt="Partner Section Background"/>
+          <Image src="/partner_orgs.png" fill sizes="100vw" loading="eager" priority className="object-cover object-top" alt="Partner Section Background"/>
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-8 py-16">
-          <h2 className="text-center text-4xl font-semibold text-[#FFF9EE] mt-10 mb-2 tracking-wide">
+          <h2 className="text-center text-4xl font-semibold text-[#373737] mt-10 mb-2 tracking-wide">
             Our Partner Organizations
           </h2>
-          <p className="text-center font-thin text-s text-m mb-10 text-[#FFFFFF]">Trusted agencies working together to support foster and kinship caregivers</p>
+          <p className="text-center font-normal text-s text-m mb-10 text-[#373737]">Trusted agencies working together to support foster and kinship caregivers</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-6">
             {partners.map((partner) => (

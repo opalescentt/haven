@@ -2,8 +2,11 @@
 
 import Link from "next/link" // Next.js Client side route navigation
 import {usePathname} from "next/navigation" // To style the active link in nav bar
+import { useSession } from "next-auth/react";
 import Image from "next/image"
+
 export default function Navbar(){
+    const { data: session } = useSession();
     const pathname = usePathname() // Read current path for active link
     const activeTab = (href) => {
         const isActive =
@@ -21,11 +24,14 @@ export default function Navbar(){
                 <Image src="/logo.png" alt="Haven logo" width={40} height={40} />
                 <span className="font text-2xl text-[#1a2e1a] font-serif">Haven</span>
             </Link>
-            {/* Needs sign-in: Child Profile, Resources Map, Staff-Directory, Support Groups */}
+            {session && (
+                <>
             <Link href="/child-profile" className={activeTab("/child-profile")}>Child Profile</Link>
             <Link href="/resources-map" className={activeTab("/resources-map")}>Resources Map</Link>
             <Link href="/staff-directory" className={activeTab("/staff-directory")}>Staff Directory</Link>
             <Link href="/support-groups" className={activeTab("/support-groups")}>Support Groups</Link>
+            </>
+            )}
         </nav>
     )
 }
