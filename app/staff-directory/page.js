@@ -48,7 +48,7 @@ export default function StaffDirectory() {
 
   return (
     <div className="min-h-screen bg-[#faf6ee]">
-      <header className="relative px-4 py-10 sm:px-10 sm:py-15 overflow-hidden min-h-50">
+      <header className="relative px-4 py-8 sm:px-10 sm:py-8 overflow-hidden min-h-50">
         <Image src="/staff_dir_bg.png" alt = "Amara community at resources center." fill sizes="100%" className="object-cover object-center" loading="eager" priority/>
         <div className="relative z-10 max-w-6xl mx-auto flex items-start justify-center flex-wrap">
           <div className="bg-white/70 px-6 py-8 sm:px-16 sm:py-12 w-full sm:w-auto">
