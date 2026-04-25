@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 
-// Auth options exported for getServerSession
 export const authOptions = {
   providers: [
     GoogleProvider({
@@ -21,24 +20,32 @@ export const authOptions = {
         await User.create({
           name: user.name,
           email: user.email,
+          role: "user",
         });
       }
       return true;
     },
-    async session({ session }) {
-      await connectDB();
 
-      const dbUser = await User.findOne({ email: session.user.email });
-      if (dbUser) {
-        session.user.role = dbUser.role;
+    async jwt({ token, user }) {
+      await connectDB();
+        if (user) {
+        const dbUser = await User.findOne({ email: user.email });
+        if (dbUser) {
+          token.role = dbUser.role;
+        }
       }
+  
+      return token;
+    },
+
+    async session({ session, token }) {
+      session.user.role = token.role;
       return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-// NextAuth handler for API routes
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
