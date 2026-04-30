@@ -1,6 +1,11 @@
 import { MongoClient } from "mongodb";
 
 export async function POST(req) {
+  const apiKey = req.headers.get("x-api-key");
+  if (apiKey !== process.env.SYNC_API_KEY) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const body = await req.json();
     const { fileName, fileContent } = body;
@@ -11,7 +16,7 @@ export async function POST(req) {
 
     const client = new MongoClient(process.env.MONGODB_URI);
     await client.connect();
-    const db = client.db("test");
+    const db = client.db("prod");
     const collection = db.collection("staff");
 
     // Clear existing and replace with fresh data
