@@ -3,17 +3,7 @@ import Image from "next/image";
 import {useState} from "react";
 
 export default function StaffDirectory() {
-  // TODO: Implement excel sharepoint and search functionality
-
-  // const formatName = (raw) => {
-  //   const [last, first] = raw.split(",").map((s) => s.trim());
-  //   const toTitle = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  //   return `${toTitle(first)} ${toTitle(last)}`;
-  // };
   
-  // assign color to each category
-  // const categorys = [ category: "Foster Care", color: "blue-400" ]
-
   const employees = [
     {
       name: "Jane Anderson",
@@ -49,7 +39,7 @@ export default function StaffDirectory() {
   return (
     <div className="min-h-screen bg-[#faf6ee]">
       <header className="relative px-4 py-8 sm:px-10 sm:py-8 overflow-hidden min-h-50">
-        <Image src="/staff_dir_bg.png" alt = "Amara community at resources center." fill sizes="100%" className="object-cover object-center" loading="eager" priority/>
+        <Image src="/staff_dir.png" alt = "Amara community at resources center." fill sizes="100%" className="object-cover object-center" loading="eager" priority/>
         <div className="relative z-10 max-w-6xl mx-auto flex items-start justify-center flex-wrap">
           <div className="bg-white/70 px-6 py-8 sm:px-16 sm:py-12 w-full sm:w-auto">
             <h1 className="text-black text-2xl sm:text-4xl font-semibold mb-2.5 text-center">Amara Staff Directory</h1>
@@ -80,7 +70,6 @@ export default function StaffDirectory() {
                 </svg>
               </span>
               <input type="text" placeholder="Search by name, role, or category..." className="w-full px-3 py-2 outline-none" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
-              <button className="px-3 py-2 bg-[#127CB3] hover:bg-[#127db37c] text-white border border-white rounded-2xl">All</button>
             </div>
           </div>
 

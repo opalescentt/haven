@@ -260,8 +260,7 @@ export default function SupportGroups() {
   return (
     <div className="min-h-screen bg-[#faf6ee] pb-24">
       <header className="relative px-4 py-8 sm:px-10 sm:py-8 overflow-hidden min-h-50">
-        <Image src="/support_header_bg.png" alt="Individuals at an Amara event." fill sizes="100vw"
-          className="object-cover object-center" loading="eager" priority />
+        <Image src="/support_header_bg.png" alt="Individuals at an Amara event."  fill sizes="100%" className="object-cover object-center" loading="eager" priority/>
         <div className="relative z-10 max-w-6xl mx-auto flex items-start justify-center flex-wrap">
           <div className="bg-white/70 px-6 py-8 sm:px-16 sm:py-12 w-full sm:w-auto">
             <h1 className="text-black text-2xl sm:text-4xl font-semibold mb-2.5 text-center">Caregiver Community</h1>
