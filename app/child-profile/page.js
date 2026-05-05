@@ -19,14 +19,28 @@ export default function ChildProfile() {
             </header>
         
             <main className="max-w-4xl mx-auto p-6 md:p-10 space-y-6">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col z-10 border border-[#FFC50C]">
+                <div className="bg-[#FFC50C] rounded-2xl overflow-hidden shadow-sm flex flex-col z-10 border border-[#F1BC11]">
+                    <div>Avatar</div>
+                    <div className="p-6">
+                        <h2 className="text-lg font-normal mb-4">made for <span className="text-2xl font-medium mb-4">Henry</span></h2>
+                        <p className="text-gray-700 mb-4">7 years old</p>
+                        <p className="text-gray-700 mb-4">2nd grade</p>
+                    </div>
+                    <div className="bg-[#FFA715] rounded-2xl overflow-hidden shadow-sm flex flex-col z-10 border border-[#D5901B]">
+                        <p className="text-gray-700">HOUSEHOLD</p>
+                        <button>+ New</button>
+                    </div>
+                    {/* <svg></svg> add edit button  */}
+                </div>
+
+                {/* <div className="bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col z-10 border border-[#FFC50C]">
                     <div className="p-6">
                         <h2 className="text-2xl font-semibold mb-4">Welcome, {session?.user?.name}!</h2>
                         <p className="text-gray-700 mb-4">This is your child profile page. Here you can track observations, access resources, and connect with our support team.</p>
                         <p className="text-gray-700 mb-4">Use the navigation menu to explore different sections of your profile and find the information you need.</p>
                         <p className="text-gray-700">If you have any questions or need assistance, please don&apos;t hesitate to reach out to our support team.</p>
                     </div>
-                </div>
+                </div> */}
             </main>
         </div>
     )

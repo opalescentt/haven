@@ -151,7 +151,7 @@ export default function LandingPage() {
           <p className="text-center font-normal text-s text-m mb-10 text-[#373737]">Trusted agencies working together to support foster and kinship caregivers</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-6">
-            {partners.map((partner) => (
+            {partners.slice(0, 8).map((partner) => (
               <div key={partner.name} className="bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col">
                 <div className="relative w-full h-36">
                   <Image src={partner.image} alt={partner.name} fill sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw" className="object-cover" />
