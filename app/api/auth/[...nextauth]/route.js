@@ -1,3 +1,5 @@
+// UPDATE FILE WITH SIGN IN LOGIC AFTER DISCUSSING
+
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { connectDB } from "@/lib/mongodb";
@@ -20,7 +22,7 @@ export const authOptions = {
         await User.create({
           name: user.name,
           email: user.email,
-          role: "user",
+          role: "test_user", // UPDATE
         });
       }
       return true;
@@ -28,13 +30,13 @@ export const authOptions = {
 
     async jwt({ token, user }) {
       await connectDB();
-        if (user) {
+      if (user) {
         const dbUser = await User.findOne({ email: user.email });
         if (dbUser) {
           token.role = dbUser.role;
         }
       }
-  
+
       return token;
     },
 

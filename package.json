@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@microsoft/microsoft-graph-client": "^3.0.7",
+    "axios": "^1.16.0",
     "calendar-link": "^2.11.0",
     "dotenv": "^17.4.2",
     "jsdom": "^29.0.2",
