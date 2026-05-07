@@ -11,6 +11,7 @@ const mongoose = require("mongoose");
 const EventSchema = new mongoose.Schema({
   title: String,
   description: String,
+  organization: String,
   format: String,
   eventType: String,
   location: String,
@@ -125,6 +126,7 @@ const extractDates = (text) => {
       return {
         title: link.textContent ? normalizeText(link.textContent) : null,
         description: description,
+        organization: "Alliance CaRES",
         format: "online",
         eventType: "TSG",
         location: null,
@@ -183,6 +185,7 @@ const extractDates = (text) => {
         ? normalizeText(link.textContent)
         : normalizeText(titleDiv?.textContent),
       description: normalizeText(descDiv?.textContent) || null,
+      organization: "Alliance CaRES",
       format: "online",
       eventType: "Special Event",
       speaker: speakerText || null,
@@ -232,6 +235,7 @@ const extractDates = (text) => {
     return {
       title: title,
       description: description,
+      organization: "Alliance CaRES",
       format: "in-person",
       eventType: "Regional Event",
       location: whereText,
